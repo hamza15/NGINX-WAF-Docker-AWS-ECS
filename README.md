@@ -5,7 +5,7 @@ While microservices can be more secure since each API can have its own built‑i
 
 According to NGINX's official website "The NGINX Web Application Firewall (WAF) protects applications against sophisticated Layer 7 attacks that might otherwise lead to systems being taken over by attackers, loss of sensitive data, and downtime".
 
-###NGINX-WAF Docker Container Setup:
+### NGINX-WAF Docker Container Setup:
 
 Prerequisites:
 - This setup assumes you are running Docker on an AWS EC2 instance. Follow this doc to install docker: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html
