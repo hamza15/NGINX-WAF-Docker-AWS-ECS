@@ -1,4 +1,4 @@
-# NGINX-WAF deploment on Docker & AWS-ECS
+# NGINX-WAF deploment on Docker & AWS ECS
 Deploying NGINX Web Application Firewall as a Docker container and further deployment into AWS ECS.
 
 While microservices can be more secure since each API can have its own built‑in throttling and limits, used to detect error conditions or attempts to overwhelm; application security is one of the largest gaps of microservices. Now that microservices are running via HTTP, the security concerns of traditional application security translate directly to microservices. Data injection attacks, cross‑site scripting, privilege escalation, and command execution are all still relevant. 
