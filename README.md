@@ -16,4 +16,36 @@ Steps:
 
 - Make your project folder inside your AWS EC2 and clone this repository:
 
+      >  mkdir ecs-docker
+      >  cd ecs-docker
+      >  git clone https://github.com/hamza15/NGINX-WAF-Docker-AWS-ECS.git
 
+- Make your bootstrap.sh file executable for Docker:
+
+      >  chmod 700 bootstrap.sh
+      
+- Log into your NGINX account, download your nginx-repo.key and nginx-repo.crt files and place in your S3 bucket.
+
+- Update configuration for the following and add files to S3 bucket:
+
+      >  /nginx/modsec/main.conf
+      >  /nginx/nginx.conf
+      >  /nginx/intenral_ips.conf
+      
+- Once everything is in place, move to your project directory and build your image:
+
+      >  docker build -t ecs-waf .
+
+- To run the image now interactive mode and connect host port 443 to container port 443, run the following:
+
+      >  docker run -it -p 443:443 ecs-waf /bin/bash
+      
+- If all your config files are setup correctly your Docker container should launch with NGINX running. You can test nginx status with the following:
+
+      > service nginx status
+
+- You can test your NGINX WAF with the Nikito scanning tool using the following documentation: 
+
+      > https://docs.nginx.com/nginx-waf/admin-guide/nginx-plus-modsecurity-waf-owasp-crs/
+      
+      
