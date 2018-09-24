@@ -64,7 +64,7 @@ aws s3 cp s3://path/to/your/nginx.conf /etc/nginx/nginx.conf
 aws s3 cp s3://path/to/your/cert/ServerCert.pem /etc/nginx/ssl/ServerCert.pem
 aws s3 cp s3://path/to/your/allowed/internal_ips.conf /etc/nginx/internal_ips.conf
 
-#Create directory for dhparams and public key infrastructure (pki)
+#Create directory for dhparams and public key infrastructure (PKI)
 mkdir /etc/pki/nginx
 chmod 666 /etc/pki/*
 openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
