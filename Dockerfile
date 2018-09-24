@@ -47,5 +47,5 @@ ADD bootstrap.sh /script/bootstrap.sh
 #Change permissions on file to make it executable
 RUN chmod +x /script/bootstrap.sh
 
-#Launches this script at launch time for container.
+#Launches this script at launch time for container
 ENTRYPOINT ["/script/bootstrap.sh"]
