@@ -46,6 +46,6 @@ Steps:
 
 - You can test your NGINX WAF with the Nikito scanning tool using the following documentation: 
 
-      > https://docs.nginx.com/nginx-waf/admin-guide/nginx-plus-modsecurity-waf-owasp-crs/
+      https://docs.nginx.com/nginx-waf/admin-guide/nginx-plus-modsecurity-waf-owasp-crs/
       
       
