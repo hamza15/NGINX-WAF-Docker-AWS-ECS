@@ -23,7 +23,7 @@ ENV PYTHONIOENCODING=UTF-8
 
 # man and less are needed to view 'aws <command> help'
 # ssh allows us to log in to new instances
-# nano is useful to read and write files in linux
+# vim is useful to read and write files in linux
 # python* is needed to install aws cli using pip install
 
 RUN apt-get install -y \
@@ -32,7 +32,6 @@ RUN apt-get install -y \
     ssh \
     python \
     python-pip \
-    python-virtualenv \
     vim \
     wget \
     zip
