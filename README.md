@@ -49,3 +49,36 @@ Steps:
       https://docs.nginx.com/nginx-waf/admin-guide/nginx-plus-modsecurity-waf-owasp-crs/
       
       
+### NGINX-WAF AWS EC2 Container Service Setup:
+
+Prerequisites:
+- Create the necessary IAM roles for ECS to excute which include ecsInstanceRole and ecsTaskExecutionRole.
+- 
+
+Steps:
+
+- Log into the AWS Console and navigate to Elastic Container Service.
+- Create a new repository to push your Docker container image to.
+- Follow the commands listed to push your image to AWS Elastic Container Registery.
+- Once pushed, click done and take note of Repository URI which we will need later.
+
+- Create a new cluster and select EC2 Linux + Networking from the configuration options.
+- Select the Type of EC2 instance and the number according to your need. Choose an existing VPC, Subnets (Private or Public according to your need) and your Security Group you configured for Docker Container instance.
+- Choose the ecsInstanceRole which allows ECS container agent to make ECS API calls on your behalf, which the w
+- Launch the cluster.
+
+- Once cluster is launched, nagivate to Task Definitions.
+- Inside Task definitions, create a new task definition with EC2 launch type.
+- Name the Task definition and select Bridge for Network mode. Select ecsTaskExecutionRole, which the wizard can produce by default.
+- Select add a container and name the container. Paste the Repository URI you noted down from AWS ECR and add port mapping values. 
+
+      Host Port 443 to Container Port 443
+- That should be enough to launch your Task Definition.
+
+- Navigate to your cluster and under Services tab, create a new service.
+- Select EC2 Launch Type and select all your previous configs along with the number of tasks you would like to run.
+- Under Take Placement select One Task Per Host. Each task would run as a container on a separate ECS Instance.
+- In most cases one task running an NGINX WAF service is good enough, however if you need you can create a Load Balancer and increase the number of tasks. This would make your load balancer distribute traffic to the number of containers you setup in the background. You can setup the minimum number of containers that should stay active at all times. An auto-scaling group can be added if need be to scale this service, however in test/QA would not be necessary.
+- Create your service.
+
+Your NGINX WAF is now protecting your microservices from Layer 7 attacks and is running on a container hosted on AWS ECS like the all cool kids. Congrats!
